@@ -8,7 +8,15 @@ packages = [{include = "auth", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+fastapi = "^0.112.0"
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.31"}
+asyncpg = "^0.29.0"
+httpx = "^0.27.0"
+pydantic-settings = "^2.4.0"
 
+
+[tool.poetry.group.dev.dependencies]
+uvicorn = "^0.30.5"
 
 [build-system]
 requires = ["poetry-core"]

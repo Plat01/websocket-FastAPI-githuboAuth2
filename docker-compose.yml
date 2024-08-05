@@ -1,0 +1,24 @@
+services:
+  api:
+    build: .
+    container_name: ${SERVICE_NAME}
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    command: ["python3", "./src/main.py"]
+    ports:
+      - ${EXPOSE_PORT}:${SERVICE_PORT}
+
+  redis:
+    image: redis:latest
+    container_name: redis_cash
+    ports:
+      - ${EXPOSE_REDIS}:${REDIS_PORT}
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
