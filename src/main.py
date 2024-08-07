@@ -1,7 +1,8 @@
 from fastapi import FastAPI
+from fastapi.templating import Jinja2Templates
 
 from config import SETTINGS
-from routers import auth
+from routers import auth, number_sender
 
 app = FastAPI()
 
@@ -12,6 +13,7 @@ async def root():
 
 
 app.include_router(auth.router, tags=['auth'])
+app.include_router(number_sender.router, tags=['random'])
 
 if __name__ == '__main__':
     import uvicorn

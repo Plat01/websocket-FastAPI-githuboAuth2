@@ -12,9 +12,12 @@ class Settings(BaseSettings):
     HOST: str = "localhost"
     PORT: int = 8888
 
-    GITHUB_CLIENT_ID: str
-    GITHUB_CLIENT_SECRET: str
-    GITHUB_CALLBACK_URL: str = 'github-callback'
+    EXPOSE_PORT: int = 8008
+
+    GITHUB_CLIENT_ID: str ='your-app-id'
+    GITHUB_CLIENT_SECRET: str = 'your-app-secret'
+    GITHUB_CALLBACK: str = 'github-callback'
+    GITHUB_CALLBACK_URL: str = 'http://localhost:8008/github-callback'
 
     LOGGER_LVL: int = 10  # DEBUG
 
@@ -22,9 +25,9 @@ class Settings(BaseSettings):
     EXPOSE_REDIS: int = 9876
     SERVICE_HOST: str = "localhost"
 
-    REDIS_HOST: str
-    REDIS_PORT: int
-    REDIS_DATABASE: int
+    REDIS_HOST: str = 'localhost'
+    REDIS_PORT: int = 6379
+    REDIS_DATABASE: int = 0
 
 
     @property

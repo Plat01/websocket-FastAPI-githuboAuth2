@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shared Random Number</title>
+</head>
+<body>
+    <h1>Shared Random Number</h1>
+    <p>Current number: <span id="number">Waiting...</span></p>
+
+    <script>
+        const socket = new WebSocket("ws://localhost:8008/ws");
+
+        socket.onmessage = function(event) {
+            document.getElementById("number").textContent = event.data;
+        };
+
+        socket.onclose = function(event) {
+            document.getElementById("number").textContent = "Connection closed";
+        };
+
+        socket.onerror = function(error) {
+            console.error("WebSocket error:", error);
+            document.getElementById("number").textContent = "Error occurred";
+        };
+    </script>
+</body>
+</html>
